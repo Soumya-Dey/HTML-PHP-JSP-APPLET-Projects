@@ -1,0 +1,56 @@
+<html>
+<head>
+<style>
+body
+{
+/*Remove below line to make bgimage NOT fixed*/
+background-attachment:fixed;
+background-repeat: no-repeat;
+
+
+
+/*Use center center in place of (x,y) to center bg image*/
+background-position: center center;
+}
+</style>
+<script language="JavaScript">
+var bgimages=new Array()
+bgimages[0]="5.jpg"
+bgimages[1]="4.jpg"
+bgimages[2]="7.jpg"
+bgimages[3]="16.jpg"
+bgimages[4]="9.jpg"
+bgimages[5]="10.jpg"
+bgimages[6]="11.jpg"
+bgimages[7]="17.jpg"
+
+
+
+//preload images
+var pathToImg=new Array()
+for (i=0;i<bgimages.length;i++){
+pathToImg[i]=new Image()
+pathToImg[i].src=bgimages[i]
+}
+
+
+
+var inc=-1
+function bgSlide(){
+if (inc<bgimages.length-1)
+inc++
+else
+inc=0
+document.body.background=pathToImg[inc].src
+}
+
+
+
+if (document.all||document.getElementById)
+window.onload=new Function('setInterval("bgSlide()",500)')
+</script></head>
+
+
+
+<body><font color="red"><h2>WELCOME TO SLIDE SHOW</h2></font></body>
+</html>

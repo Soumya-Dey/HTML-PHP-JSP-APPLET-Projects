@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+
+    <style>
+        *{
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body{
+            padding: 2em 4em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .greeting{
+            font-size: 1.4em;
+        }
+
+        .date{
+            font-size: 3em;
+            width: max-content;
+            padding: 0.4em 0.6em;
+            border: 1px solid #000;
+            border-radius: 12px;
+            margin-bottom: 42px;
+        }
+
+        .resize-btn{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="greeting"></h1>
+    <h1 class="date"></h1>
+    <button class="resize-btn">Resize Window</button>
+
+    <script>
+        document.querySelector('.resize-btn').addEventListener('click', () => {
+            const win = window.open("date.html", "", "width=500,height=500");
+            win.moveTo((screen.width/2)-250, (screen.height/2)-250);
+            window.close()
+        });
+
+        setInterval(() => {
+            const now = new Date();
+            document.querySelector('.date').innerHTML = `${("0" + now.getHours()).slice(-2)}:${("0" + now.getMinutes()).slice(-2)}:${("0" + now.getSeconds()).slice(-2)}`;
+
+            if(now.getHours() < 12) document.querySelector('.greeting').innerHTML = 'Good Morning!';
+            else if(now.getHours() >= 12 && now.getHours() < 16) document.querySelector('.greeting').innerHTML = 'Good Afternooon!';
+            else if(now.getHours() >= 16 && now.getHours() < 20) document.querySelector('.greeting').innerHTML = 'Good Evening!';
+            else document.querySelector('.greeting').innerHTML = 'Good Night!';
+        }, 1000)
+    </script>
+</body>
+</html>

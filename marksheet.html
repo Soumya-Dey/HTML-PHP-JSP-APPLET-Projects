@@ -1,0 +1,87 @@
+<html><head><title></title></head>
+<body><form name='kg'>
+<table align="center" bordercolor="midnightblue" width="50%" border="3" style="border-radius:20px;">
+<tr>
+<th style="background-color:red;color:white;font-size:30px;" colspan="3" >MARK SHEET</th>
+</tr>
+<tr>
+<th>SUB-1 : <input name="m1" size="4"></th>
+<th>Out of : <input name="m1f" size="4"></th>
+<th>Percentage : <input name="per1" size="4"></th>
+</tr>
+<tr>
+<th>SUB-2 : <input name="m2" size="4"></th>
+<th>Out of : <input name="m2f" size="4"></th>
+<th>Percentage : <input name="per2" size="4"></th>
+</tr>
+<tr>
+<th>SUB-3 : <input name="m3" size="4"></th>
+<th>Out of : <input name="m3f" size="4"></th>
+<th>Percentage : <input name="per3" size="4"></th>
+</tr>
+<tr><th colspan="3">PERCENT: <input name='per' size="6"></th></tr>
+<tr><th colspan="3"> GRADE : &nbsp;&nbsp;<input name='grade' size="6"></th></tr>
+<tr><th colspan="3"> <input type="button" onClick="result(kg);" value="MARSKSHEET"></th></tr>
+<tr><td align="center" colspan="3"><input type="reset" value="RESET"</td></tr>
+</table>
+</form>
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+function result(res)
+{
+var m1p=0;
+m1v=parseFloat(res.m1.value);
+m1fv=parseFloat(res.m1f.value);
+m1p=parseFloat(m1v/m1fv*100);
+res.per1.value=parseFloat(m1p).toFixed(2);
+
+
+
+var m2p=0;
+m2v=parseFloat(res.m2.value);
+m2fv=parseFloat(res.m2f.value);
+m2p=parseFloat(m2v/m2fv*100);
+res.per2.value=parseFloat(m2p).toFixed(2);
+
+
+
+var m3p=0;
+m3v=parseFloat(res.m3.value); //parseFloat(num).toFixed(2)
+m3fv=parseFloat(res.m3f.value);
+m3p=m3v/m3fv*100;
+res.per3.value=parseFloat(m3p).toFixed(2);
+
+
+
+var tot=0;
+var totf=0;
+var pfinal=0;
+pfinal=((m1v+m2v+m3v)/(m1fv+m2fv+m3fv)*100);
+res.per.value=pfinal;
+var grd=' '
+if (pfinal>=70)
+{
+grd="A";
+}
+else if (pfinal>=55)
+{
+grd="B";
+}
+else if (pfinal>=40)
+{
+grd="C";
+}
+else
+{
+grd="F"
+}
+
+
+
+res.grade.value=grd;
+}
+</script>
