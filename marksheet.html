@@ -1,87 +1,185 @@
-<html><head><title></title></head>
-<body><form name='kg'>
-<table align="center" bordercolor="midnightblue" width="50%" border="3" style="border-radius:20px;">
-<tr>
-<th style="background-color:red;color:white;font-size:30px;" colspan="3" >MARK SHEET</th>
-</tr>
-<tr>
-<th>SUB-1 : <input name="m1" size="4"></th>
-<th>Out of : <input name="m1f" size="4"></th>
-<th>Percentage : <input name="per1" size="4"></th>
-</tr>
-<tr>
-<th>SUB-2 : <input name="m2" size="4"></th>
-<th>Out of : <input name="m2f" size="4"></th>
-<th>Percentage : <input name="per2" size="4"></th>
-</tr>
-<tr>
-<th>SUB-3 : <input name="m3" size="4"></th>
-<th>Out of : <input name="m3f" size="4"></th>
-<th>Percentage : <input name="per3" size="4"></th>
-</tr>
-<tr><th colspan="3">PERCENT: <input name='per' size="6"></th></tr>
-<tr><th colspan="3"> GRADE : &nbsp;&nbsp;<input name='grade' size="6"></th></tr>
-<tr><th colspan="3"> <input type="button" onClick="result(kg);" value="MARSKSHEET"></th></tr>
-<tr><td align="center" colspan="3"><input type="reset" value="RESET"</td></tr>
-</table>
-</form>
+<html>
+
+<head>
+    <title></title>
+
+    <style>
+        *{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body{
+            margin: 3em 6em;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-container{
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .h1{
+            font-size: 2em;
+            margin-bottom: 1.5em;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .conatiner{
+            margin: 0 2em;
+            display: flex;
+            gap: 1.2em;
+            flex-direction: column;
+        }
+
+        .submit-btn{
+            height: max-content;
+        }
+
+        .result-conatiner{
+            width: 786px;
+            margin-left: -2.4em;
+            margin-top: 2em;
+            display: flex;
+            gap: 5em;
+            justify-content: flex-start;
+        }
+
+        .result-conatiner p{
+            background-color: #f5f5f5;
+            border: 1px solid #202020;
+            border-radius: 4px;
+            padding: 1.4em 3em;
+            display: flex;
+            gap: 1em;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result-conatiner span{
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        input{
+            font-weight: 600;
+            padding: 4px 8px;
+        }
+
+        input::placeholder{
+            font-weight: 400;
+        }
+
+        .btn-container{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .result-conatiner{
+            opacity: 0;
+            transition: all 0.3s ease-in;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="h1">Mark Sheet</p>
+
+    <form class='form'>
+        <div class="input-container">
+            <div class="conatiner conatiner1">
+                Subject 1
+                <input class="m1" size="18" required placeholder="Marks ontained">
+                Total
+                <input class="m1f" size="18" value="100" required placeholder="Total Marks">
+                Percentage
+                <input class="per1" size="18" disabled placeholder="">
+            </div>
+            <div class="conatiner conatiner2">
+                Subject 2
+                <input class="m2" size="18" required placeholder="Marks ontained">
+                Total
+                <input class="m2f" size="18" value="100" required placeholder="Total Marks">
+                Percentage
+                <input class="per2" size="18" disabled placeholder="">
+            </div>
+            <div class="conatiner conatiner3">
+                Subject 3
+                <input class="m3" size="18" required placeholder="Marks ontained">
+                Total
+                <input class="m3f" size="18" value="100" required placeholder="Total Marks">
+                Percentage
+                <input class="per3" size="18" disabled placeholder="">
+            </div>
+    
+            <div class="btn-container">
+                <input class="submit-btn" type="submit" value="Calculate">
+                <input class="reset-btn" type="reset" value="Reset">
+            </div>
+        </div>
+
+        <div class="result-conatiner">
+            <p class="percent">Overall Percentage<span class="per-span">NA</span></p>
+            <p class="grade">Grade<span class="grade-span">NA</span></p>
+            <p class="remark">Remarks<span class="remark-span">NA</span></p>
+        </div>
+    </form>
 </body>
+
 </html>
 
-
-
 <script type="text/javascript">
-function result(res)
-{
-var m1p=0;
-m1v=parseFloat(res.m1.value);
-m1fv=parseFloat(res.m1f.value);
-m1p=parseFloat(m1v/m1fv*100);
-res.per1.value=parseFloat(m1p).toFixed(2);
+    const marks1 = document.querySelector('.m1');
+    const marks2 = document.querySelector('.m2');
+    const marks3 = document.querySelector('.m3');
 
+    const total1 = document.querySelector('.m1f');
+    const total2 = document.querySelector('.m2f');
+    const total3 = document.querySelector('.m3f');
 
+    
+    document.querySelector('.form').addEventListener('submit', (e) => {
+        e.preventDefault();
 
-var m2p=0;
-m2v=parseFloat(res.m2.value);
-m2fv=parseFloat(res.m2f.value);
-m2p=parseFloat(m2v/m2fv*100);
-res.per2.value=parseFloat(m2p).toFixed(2);
+        const per1 = (marks1.value / total1.value) * 100;
+        const per2 = (marks2.value / total2.value) * 100;
+        const per3 = (marks3.value / total3.value) * 100;
+        
+        document.querySelector('.per1').value = per1.toFixed(2);
+        if(per1 < 40) document.querySelector('.per1').style.color = "red";
 
+        document.querySelector('.per2').value = per2.toFixed(2);
+        if(per2 < 40) document.querySelector('.per2').style.color = "red";
 
+        document.querySelector('.per3').value = per3.toFixed(2);
+        if(per3 < 40) document.querySelector('.per3').style.color = "red";
 
-var m3p=0;
-m3v=parseFloat(res.m3.value); //parseFloat(num).toFixed(2)
-m3fv=parseFloat(res.m3f.value);
-m3p=m3v/m3fv*100;
-res.per3.value=parseFloat(m3p).toFixed(2);
+        const overallPer = (per1 + per2 + per2) / 3;
+        
+        let grade = '';
+        if (overallPer >= 70){
+            grade = "A";
+        }else if (overallPer >= 55){
+            grade = "B";
+        }else if (overallPer >= 40){
+            grade = "C";
+        }else{
+            grade = "F"
+        }
+        
+        const remark = overallPer < 40 ? 'Fail' : 'Pass';
 
+        document.querySelector('.per-span').innerHTML = `${Math.ceil(overallPer)}%`;
+        document.querySelector('.grade-span').innerHTML = grade;
+        document.querySelector('.remark-span').innerHTML = remark;
+        document.querySelector('.remark-span').style.color = remark == 'Fail' ? "red" : "black";
 
-
-var tot=0;
-var totf=0;
-var pfinal=0;
-pfinal=((m1v+m2v+m3v)/(m1fv+m2fv+m3fv)*100);
-res.per.value=pfinal;
-var grd=' '
-if (pfinal>=70)
-{
-grd="A";
-}
-else if (pfinal>=55)
-{
-grd="B";
-}
-else if (pfinal>=40)
-{
-grd="C";
-}
-else
-{
-grd="F"
-}
-
-
-
-res.grade.value=grd;
-}
+        document.querySelector(".result-conatiner").style.opacity = 1;
+    })
 </script>
