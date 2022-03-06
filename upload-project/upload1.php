@@ -1,6 +1,8 @@
 <html>
 <h2 style="background-color:black;color:cyan;text-align:center;">
 <?php
+var_dump($_FILES["fileToUpload"]);
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;

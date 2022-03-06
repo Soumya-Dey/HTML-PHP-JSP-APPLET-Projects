@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Form</title>
+</head>
+<body>
+    <form action="form.php" method="post">
+        <fieldset>
+            <legend>Student Details</legend>
+            Full Name: 
+            <input type="text" name="fullname" id="fullname" placeholder="Enter your name" required>
+            <br>
+            <br>
+            Age:
+            <input type="number" name="age" id="age" placeholder="Enter your age" required>
+            <br>
+            <br>
+            Are you an adult?
+            <input type="checkbox" name="adult" id="adult">
+            <br>
+            <br>
+            Date of Birth:
+            <input type="date" name="date" id="date" required>
+            <br>
+            <br>
+            Department:
+            <select name="dept" id="dept" required>
+                <option value="" selected>Select</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="English">English</option>
+                <option value="Physics">Physics</option>
+            </select>
+            <br>
+            <br>
+            Passing Year
+            <br>
+            <input type="radio" id="2022" name="pass_year" value="2022">
+            <label for="2022">2022</label><br>
+            <input type="radio" id="2023" name="pass_year" value="2023">
+            <label for="2023">2023</label><br>
+            <input type="radio" id="2024" name="pass_year" value="2024">
+            <label for="2024">2024</label>
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Clear">
+        </fieldset>
+    </form>
+</body>
+</html>
