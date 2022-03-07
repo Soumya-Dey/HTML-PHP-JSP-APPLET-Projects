@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Form</title>
+
+    <style>
+        *{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        fieldset{
+            margin-top: 2em;
+            padding: 1.2em 2em;
+            width: max-content;
+            border-radius: 8px;
+            background-color: #f5f5f5;
+            box-shadow: 8px 8px 0 0 #ccc;
+        }
+
+        legend{
+            padding: 0.4em 0.8em;
+            background-color: darkcyan;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        input[type=text], input[type=tel]{
+            width: 220px;
+            float: right;
+        }
+
+        textarea{
+            float: right;
+        }
+
+        input[type="radio"], input[type="checkbox"]{
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .container{
+            width: 400px;
+
+        }
+
+        input[type="submit"], input[type="reset"]{
+            cursor: pointer;
+            margin-right: 1em;
+            padding: 0.4em 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <form action="form.php" method="post">
+        <fieldset>
+            <legend>Student Details</legend>
+
+            <div class="container">
+                <label for="fullname">Full Name:</label>
+                <input type="text" name="fullname" id="fullname" placeholder="Enter your name"  required>
+
+                <br>
+                <br>
+                <label for="guardian">Guardian's Name:</label>
+                <input type="text" name="guardian" id="guardian" placeholder="Enter your guardian's name"  required>
+
+                <br>
+                <br>
+                <label for="address">Address:</label>
+                <textarea name="address" id="address" cols="30" rows="4" placeholder="Enter your address"  required></textarea>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <label>Gender:</label>
+                <br>
+                <input type="radio" id="male" name="gender" value="Male" >
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="Female" >
+                <label for="female">Female</label><br>
+                <input type="radio" id="other" name="gender" value="Other" >
+                <label for="other">Other</label>
+
+                <br>
+                <br>
+                <label for="contact">Contact Number:</label>
+                <input type="tel" name="contact" id="contact" maxlength="10" placeholder="Enter contact no." required >
+
+                <br>
+                <br>
+                <label>Course(s) applied for:</label>
+                <br>
+                <input type="checkbox" id="it" name="course[]" value="Internet Technologies" >
+                <label for="it">Internet Technologies</label><br>
+                <input type="checkbox" id="dbms" name="course[]" value="Advanced DBMS" >
+                <label for="dbms">Advanced DBMS</label><br>
+                <input type="checkbox" id="os" name="course[]" value="Distributed Operating Systems">
+                <label for="os">Distributed Operating Systems</label>
+                
+                <br>
+                <br>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Clear">
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
