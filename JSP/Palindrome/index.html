@@ -7,6 +7,8 @@
     <title>Palindrome Checker</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
         *{
             box-sizing: border-box;
             margin: 0;
@@ -21,14 +23,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         .container{
             position: relative;
-            padding: 4em 4.5em;
+            padding: 3em 4.5em;
             border-radius: 6px;
-            height: 330px;
+            height: 316px;
             background-color: #fff;
             border: 1px solid #969696;
             box-shadow: -4px 4px 0 0 #969696, -8px 8px 0 0 #969696;
@@ -62,7 +64,7 @@
 
         .input-heading.active{
             top: -8px;
-            font-size: 0.75em;
+            font-size: 0.8em;
             color: #202020;
             padding: 0 4px;
         }
@@ -132,6 +134,8 @@
         const textInput = document.querySelector("input[type='text']");
         const inputHeading = document.querySelector(".input-heading");
         const resetBtn = document.querySelector("input[type='reset']");
+
+        textInput.addEventListener('input', (e) => e.target.value = e.target.value.toUpperCase());
 
         textInput.addEventListener('focus', () => inputHeading.classList.add('active'));
 

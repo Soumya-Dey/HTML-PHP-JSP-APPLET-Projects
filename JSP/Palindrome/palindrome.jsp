@@ -7,20 +7,13 @@
     <title>Document</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
         *{
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
-        /* body{
-            padding: 6em 6em;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        } */
 
          body{
             background: #f5f5f5;
@@ -30,7 +23,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         .container{
@@ -49,6 +42,10 @@
 
         b{
             font-size: 2em;
+        }
+
+        span{
+            color: darkcyan;
         }
 
         .btn-back{
@@ -91,7 +88,7 @@
     %>
 
     <div class="container">
-        <b> "<%= request.getParameter("str") %>" is <%= isPalindrome(request.getParameter("str")) %> </b>
+        <b> <span>"<%= request.getParameter("str") %>"</span> is <%= isPalindrome(request.getParameter("str")) %> </b>
         <a class="btn-back" href="/JSP Programs/Palindrome">Go Back</a>
     </div>
 </body>
