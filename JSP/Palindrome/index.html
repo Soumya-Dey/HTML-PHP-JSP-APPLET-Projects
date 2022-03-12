@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background: #f5f5f5;
+            height: 100vh;
+            padding: 6em 6em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .container{
+            position: relative;
+            padding: 4em 4.5em;
+            border-radius: 6px;
+            height: 330px;
+            background-color: #fff;
+            border: 1px solid #969696;
+            box-shadow: -4px 4px 0 0 #969696, -8px 8px 0 0 #969696;
+        }
+
+        .heading{
+            font-size: 1.4em;
+            margin-bottom: 2em;
+            text-align: center;
+        }
+
+        form{
+            position: relative;
+            background-color: #fff;
+        }
+
+        .input-heading{
+            position: absolute;
+            top: 13px;
+            left: 17px;
+            background-color: inherit;
+            font-size: 0.9em;
+            color: #888;
+            text-align: left;
+            width: max-content;
+            margin-bottom: 1.4em;
+            padding: 4px;
+            pointer-events: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .input-heading.active{
+            top: -8px;
+            font-size: 0.75em;
+            color: #202020;
+            padding: 0 4px;
+        }
+
+        input[type="text"]{
+            font-size: 1em;
+            width: 340px;
+            padding: 18px 20px;
+            border: 1px solid #888;
+            border-radius: 6px;
+        }
+
+        .btn-container{
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 1em;
+        }
+
+        input[type="submit"], input[type="reset"]{
+            font-size: 1em;
+            font-weight: 600;
+            padding: 10px 24px;
+            border: 2px solid #202020;
+            background-color: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]{
+            background-color: darkcyan;
+            border: 2px solid darkcyan;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover{
+            background-color: transparent;
+            color: darkcyan;
+            border-radius: 34px;
+        }
+
+        input[type="reset"]:hover{
+            border-radius: 34px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="heading">Palindrome Checker</p>
+
+        <form action="palindrome.jsp" method="get">
+            <p class="input-heading">Enter your text</p>
+            <input type="text" name="str" autocomplete="off" required>
+
+            <br>
+            <br>
+            
+            <div class="btn-container">
+                <input type="submit" value="Check">
+                <input type="reset" value="Clear">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const textInput = document.querySelector("input[type='text']");
+        const inputHeading = document.querySelector(".input-heading");
+        const resetBtn = document.querySelector("input[type='reset']");
+
+        textInput.addEventListener('focus', () => inputHeading.classList.add('active'));
+
+        textInput.addEventListener('blur', () => {
+            if(!textInput.value || !textInput.value.length)
+                inputHeading.classList.remove('active');
+        });
+
+        resetBtn.addEventListener("click", () => inputHeading.classList.remove('active'));
+    </script>
+</body>
+</html>
