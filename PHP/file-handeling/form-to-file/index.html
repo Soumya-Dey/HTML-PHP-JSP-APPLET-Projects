@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            height: 100vh;
+            padding: 0 4em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        fieldset{
+            padding: 1.2em 2em;
+            border-radius: 8px;
+            background-color: #f5f5f5;
+            box-shadow: 8px 8px 0 0 #ccc, 4px 4px 0 0 #ccc;
+        }
+
+        legend{
+            background-color: darkcyan;
+            padding: 2px 12px;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        .name-container{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .marks-outer-container{
+            width: 160px;
+        }
+
+        .marks-container{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .marks-heading{
+            margin-bottom: 12px;
+        }
+
+        input[type="text"], input[type="number"]{
+            padding: 6px 12px;
+            border: 1px solid #202020;
+            border-radius: 4px;
+        }
+
+        input[type="submit"], input[type="reset"]{
+            padding: 6px 12px;
+            cursor: pointer;
+            border: 1px solid #202020;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]{
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body>
+    <form action="form.php" method="POST">
+        <fieldset>
+            <legend>Student Details</legend>
+            <div class="name-container">
+                <label>Enter Name</label>
+                <input type="text" name="name" size="30" tabindex="1" placeholder="Enter your name" required>
+            </div>
+            <br>
+            <div class="marks-outer-container">
+                <p class="marks-heading">Enter Marks</p>
+                <div class="marks-container">
+                    <label>Paper 1</label>
+                    <input type="number" min="0" max="100" name="p1" size="3" tabindex="2" placeholder="0-100" required>
+                </div>
+                <br>
+                <div class="marks-container">
+                    <label>Paper 2</label>
+                    <input type="number" min="0" max="100" name="p2" size="3" tabindex="3" placeholder="0-100" required>
+                </div>
+                <br>
+                <div class="marks-container">
+                    <label>Paper 3</label>
+                    <input type="number" min="0" max="100" name="p3" size="3" tabindex="4" placeholder="0-100" required>
+                </div>
+                <br>
+                <div class="marks-container">
+                    <label>Paper 4</label>
+                    <input type="number" min="0" max="100" name="p4" size="3" tabindex="4" placeholder="0-100" required>
+                </div>
+                <br>
+                <div class="marks-container">
+                    <label>Paper 5</label>
+                    <input type="number" min="0" max="100" name="p5" size="3" tabindex="4" placeholder="0-100" required>
+                </div>
+            </div>
+            <br>
+            <div class="file-container">
+                <input type="text" name="file" size="30" tabindex="1" placeholder="Enter filename to save" required>
+            </div>
+            <br>
+            <input type=submit value="Submit" accesskey="s" tabindex="5">
+            <input type=reset value="Clear" accesskey="r" tabindex="6">
+        </fieldset>
+    </form>
+</body>
+</html>
