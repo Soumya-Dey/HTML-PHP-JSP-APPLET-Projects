@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog Clock</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+      html{
+          height: 100%;
+      }
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ececec;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .clock {
+        background: #ececec;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 14px solid #333;
+        position: relative;
+        box-shadow: 0 2vw 4vw -1vw rgba(0, 0, 0, 0.8);
+      }
+
+      .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #ccc;
+        border: 1px solid #000;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+        z-index: 10;
+        box-shadow: 0 2px 4px -1px black;
+      }
+
+      .hour-hand {
+        position: absolute;
+        z-index: 5;
+        width: 4px;
+        height: 65px;
+        background: #333;
+        top: 79px;
+        transform-origin: 50% 72px;
+        left: 50%;
+        margin-left: -2px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+      }
+
+      .minute-hand {
+        position: absolute;
+        z-index: 6;
+        width: 4px;
+        height: 100px;
+        background: #666;
+        top: 46px;
+        left: 50%;
+        margin-left: -2px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        transform-origin: 50% 105px;
+      }
+
+      .second-hand {
+        position: absolute;
+        z-index: 7;
+        width: 2px;
+        height: 120px;
+        background: #4ed19f;
+        top: 26px;
+        left: 50%;
+        margin-left: -1px;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        transform-origin: 50% 125px;
+      }
+
+      span {
+        display: inline-block;
+        position: absolute;
+        color: #333;
+        font-size: 22px;
+        font-family: 'Noto Serif', serif;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px #9e9e9e;
+        z-index: 4;
+      }
+
+      .h12 {
+        top: 30px;
+        left: 50%;
+        margin-left: -16px;
+      }
+      .h3 {
+        top: 134px;
+        right: 30px;
+      }
+      .h6 {
+        bottom: 30px;
+        left: 50%;
+        margin-left: -12px;
+      }
+      .h9 {
+        left: 32px;
+        top: 134px;
+      }
+
+      .diallines {
+        position: absolute;
+        z-index: 2;
+        width: 2px;
+        height: 15px;
+        background: #666;
+        left: 50%;
+        margin-left: -1px;
+        transform-origin: 50% 150px;
+      }
+      .diallines:nth-of-type(5n) {
+        position: absolute;
+        z-index: 2;
+        width: 4px;
+        height: 23px;
+        background: #666;
+        left: 50%;
+        margin-left: -1px;
+        transform-origin: 50% 150px;
+      }
+
+      .info {
+        position: absolute;
+        width: max-content;
+        height: 20px;
+        padding: 0 10px;
+        border-radius: 6px;
+        background: #ccc;
+        text-align: center;
+        line-height: 20px;
+        color: #000;
+        font-size: 11px;
+        top: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Noto Serif', serif;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px #9e9e9e;
+        z-index: 3;
+        letter-spacing: 3px;
+      }
+      .date {
+        top: 80px;
+      }
+      .day {
+        top: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div>
+        <div class="info date"></div>
+        <div class="info day"></div>
+      </div>
+      <div class="dot"></div>
+      <div>
+        <div class="hour-hand"></div>
+        <div class="minute-hand"></div>
+        <div class="second-hand"></div>
+      </div>
+      <div>
+        <span class="h3">III</span>
+        <span class="h6">VI</span>
+        <span class="h9">IX</span>
+        <span class="h12">XII</span>
+      </div>
+      <div class="diallines"></div>
+    </div>
+
+    <script>
+      const dialLines = document.getElementsByClassName('diallines');
+      const clockEl = document.getElementsByClassName('clock')[0];
+
+      for (let i = 1; i < 60; i++) {
+        clockEl.innerHTML += "<div class='diallines'></div>";
+        dialLines[i].style.transform = 'rotate(' + 6 * i + 'deg)';
+      }
+
+      const clock = () => {
+        const d = new Date();
+        const h = d.getHours();
+        const m = d.getMinutes();
+        const s = d.getSeconds();
+
+        const sDeg = s * 6;
+        const mDeg = m * 6 + s * 0.1;
+        const hDeg = h * 30 + m * 0.5;
+
+        document.querySelector(
+          '.hour-hand'
+        ).style.transform = `rotate(${hDeg}deg)`;
+
+        document.querySelector(
+          '.minute-hand'
+        ).style.transform = `rotate(${mDeg}deg)`;
+
+        document.querySelector(
+          '.second-hand'
+        ).style.transform = `rotate(${sDeg}deg)`;
+
+        document.querySelector('.date').innerHTML = d.toLocaleDateString(
+          'en-IN',
+          { day: 'numeric', month: 'short', year: 'numeric' }
+        );
+
+        document.querySelector('.day').innerHTML = d.toLocaleDateString(
+          'en-IN',
+          { weekday: 'long' }
+        );
+      };
+
+      setInterval(clock, 1000);
+    </script>
+  </body>
+</html>
