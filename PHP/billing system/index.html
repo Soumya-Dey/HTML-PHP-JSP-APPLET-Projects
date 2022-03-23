@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing System</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        body {
+            padding: 3em 8em;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .heading {
+            font-size: 2em;
+            font-weight: 500;
+            margin-bottom: 1.4em;
+        }
+
+        .container {
+            display: flex;
+            gap: 48px;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .input-container {
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .inner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 24px);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        select {
+            max-width: 80px;
+        }
+
+        textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button,
+        input[type="submit"],
+        input[type="reset"] {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            padding: 12px;
+            border: 2px solid #202020;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: #fff;
+            border-color: #2ecc71;
+        }
+
+        button:hover {
+            border: 2px solid #2ecc71;
+            background-color: transparent;
+            color: #2ecc71;
+            border-radius: 6px;
+        }
+
+        input[type="submit"] {
+            width: 65%;
+            background-color: #3498db;
+            color: #fff;
+            border-color: #3498db;
+        }
+
+        input[type="submit"]:hover {
+            border: 2px solid #3498db;
+            background-color: transparent;
+            color: #3498db;
+            border-radius: 6px;
+        }
+
+        input[type="reset"] {
+            width: 35%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        form p {
+            margin: 0;
+            margin-bottom: -5px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="heading">Billing System</p>
+    <div class="container">
+        <div class="input-container">
+            <div class="inner-container">
+                Product Name:
+                <input type="text" name="name" id="name" autocomplete="off" placeholder="Enter product name" required>
+            </div>
+
+            <div class="inner-container">
+                Price:
+                <input type="number" name="price" id="price" min="1" autocomplete="off"
+                    placeholder="Enter product price" required>
+            </div>
+
+            <div class="inner-container">
+                Quantity:
+                <select name="qty" id="qty" required>
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <button class="add-btn">Add Item to Cart</button>
+        </div>
+
+        <form id="form" action="bill.php" method="post">
+            <input type="number" name="total" id="total" hidden>
+            <p>Your Cart</p>
+            <textarea class="bill-summary" name="summary" cols="60" rows="14"
+                placeholder="Your Cart is empty!"></textarea>
+            <div class="btn-container">
+                <input type="submit" value="Calculate Bill Amount" class="calc-btn">
+                <input type="reset" value="Clear Bill" class="rst-btn">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let totalPrice = 0;
+        document.querySelector('.add-btn').addEventListener('click', () => {
+            const name = document.querySelector('#name').value;
+            const price = document.querySelector('#price').value;
+            const qty = document.querySelector('#qty').value;
+
+            if (price <= 0) alert("Price must be grater than 0");
+            else {
+                document.querySelector('.bill-summary').value += `Item: ${name}, Price: ${price}, Qty: ${qty}\n`;
+
+                totalPrice += +price * +qty;
+                document.querySelector('#name').value = '';
+                document.querySelector('#price').value = '';
+                document.querySelector('#qty').value = '1';
+
+                document.querySelector('#total').value = totalPrice;
+
+                console.log(totalPrice);
+            }
+        });
+    </script>
+</body>
+
+</html>
