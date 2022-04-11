@@ -2,19 +2,46 @@
 
 <head>
 	<style>
-		div {
-			background-color: #d7faae;
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap');
+
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		body{
+			font-family: 'Noto Sans', sans-serif;
+		}
+
+		 div {
 			color: #236aca;
 			width: 1000px;
-			border: 25px solid white;
 			padding: 25px;
 			text-align: center;
 			font-size: 25;
+		} 
+
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+			/* margin-top: -320px; */
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
 		}
 	</style>
 </head>
 
-<body style="background-color: f9b7f1; color: 236aca;">
+<body>
 	<br><br><br>
 	<center>
 		<div>
@@ -37,7 +64,7 @@
 			$sql1 = "INSERT INTO $tablename VALUES ('$name','$email','$mobile')";
 			$result1 = mysqli_query($connection, $sql1);
 			if ($result1) {
-				echo $name . ' , ' . $mobile . ' , ' . $email . " added in " . $tablename . " successfully" . "<br>";
+				echo $name . ' , ' . $mobile . ' , ' . $email . " added in " . $tablename . " successfully";
 				$sql2 = "SELECT * FROM $tablename";
 				$result2 = mysqli_query($connection, $sql2);
 				$nrec = 0;
@@ -50,7 +77,7 @@
 				fwrite($fp1, chr(13));
 				fwrite($fp1, chr(10));
 				fclose($fp1);
-				echo "<center><table cellpadding=3 width=100% border=1>";
+				echo "<table cellpadding=3 width=100% border=1>";
 				echo "<tr>" . "<th colspan=4 align=center font-size=60px>" . "Table-1: Content of $tablename" . "</th>" . "</tr>";
 				echo "<tr>" . "<td>Rec</td>" . "<td>Name</td>" . "<td>Mobile</td>" . "<td>Email</td></tr>";
 				while ($row = mysqli_fetch_assoc($result2)) {
@@ -70,9 +97,9 @@
 					fclose($fp1);
 					echo "<tr>" . "<td>" . $nrec . "</td>" . "<td>" . $name . "</td>" . "<td>" . $mobile . "</td>" . "<td>" . $email . "</td>" . "</tr>";
 				}
-				echo "</table>" . "</center>";
+				echo "</table>";
 				echo "<br><br>Total number of records available in $tablename=" . $nrec . "<br><br>";
-				echo "<a href=dbms.html>" . "BACK" . "</a>";
+				echo "<a class ='back-btn' href='/537/mysql/insert-records/'>" . "BACK" . "</a>";
 			} else {
 				echo "***Record cannot be added in $tablename. Please check your system***" . "<br>";
 			}

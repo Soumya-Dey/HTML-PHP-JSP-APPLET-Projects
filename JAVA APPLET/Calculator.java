@@ -29,16 +29,16 @@ class Calculator extends JFrame implements ActionListener {
         resultLabel.setBounds(110, 140, 150, 30);
 
         addBtn = new JButton("Add(+)");
-        addBtn.setBounds(30, 200, 70, 25);
+        addBtn.setBounds(30, 200, 100, 25);
 
         sumBtn = new JButton("Sub(-)");
-        sumBtn.setBounds(110, 200, 70, 25);
+        sumBtn.setBounds(140, 200, 70, 25);
 
         mulBtn = new JButton("Mul(*)");
-        mulBtn.setBounds(190, 200, 70, 25);
+        mulBtn.setBounds(220, 200, 70, 25);
 
         divBtn = new JButton("Div(/)");
-        divBtn.setBounds(270, 200, 70, 25);
+        divBtn.setBounds(300, 200, 70, 25);
 
         clrBtn = new JButton("Clear");
         clrBtn.setBounds(110, 250, 150, 25);
@@ -62,7 +62,7 @@ class Calculator extends JFrame implements ActionListener {
         clrBtn.addActionListener(this);
 
         setLayout(null);
-        setSize(400, 350);
+        setSize(450, 350);
         setVisible(true);
     }
 
