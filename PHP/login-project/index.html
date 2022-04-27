@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            padding: 4em 6em;
+        }
+
+        .msg {
+            padding: 10px 16px;
+            border-radius: 4px;
+            width: max-content;
+            margin-bottom: 44px;
+        }
+
+        .msg.fail {
+            background-color: #eb4e4bad;
+            color: #fff;
+        }
+
+        .msg.success {
+            background-color: #6ab04cad;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="msg"></p>
+
+        <h2>Login</h2>
+        <form action="login.php" method="post">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+            <br>
+            <br>
+
+            <label for="pass">Password</label>
+            <input type="password" name="pass" id="pass" required>
+            <br>
+            <br>
+
+            <input type="submit" value="Login">
+        </form>
+        <br>
+        Don't have an account? <a href="register.html">Register Here</a>
+
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.querySelector(".msg").classList.add(params.get('status'));
+        document.querySelector(".msg").innerHTML = params.get("msg");
+    </script>
+</body>
+
+</html>
