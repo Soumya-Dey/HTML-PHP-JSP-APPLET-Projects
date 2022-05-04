@@ -67,6 +67,7 @@ public class Login extends HttpServlet {
             out.println("<br>Email address: " + email);
             out.println("<br><a href='index.html'>Logout</a>");
         } else {
+            out.println(userName);
             out.println("Email or Password wrong. Try Again!");
             RequestDispatcher rd = req.getRequestDispatcher("index.html");
             rd.include(req, res);
