@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <h2>Login</h2>
+    <form action="login.jsp" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+        <br>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+        <br>
+        <br>
+        <label for="name">Password</label>
+        <input type="password" name="pass" id="pass" />
+        <br>
+        <br>
+        <label for="action">Action</label>
+        <select name="action" id="action">
+            <option value="login">Login</option>
+            <option value="register">Register</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>
