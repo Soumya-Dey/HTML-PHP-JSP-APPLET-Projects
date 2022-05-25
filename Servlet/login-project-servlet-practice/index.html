@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+</head>
+
+<body>
+    <h2>Login</h2>
+    <form action="Login" method="post">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <br>
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="pass">
+        <br>
+        <br>
+        <label for="action">Action</label>
+        <select name="action" id="action">
+            <option value="login">Login</option>
+            <option value="register">Register</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit" name="submit" value="submit">
+    </form>
+</body>
+
+</html>
