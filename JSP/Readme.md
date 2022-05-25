@@ -1,7 +1,7 @@
 ## Steps to run the Database program
 
 
-1. Put the "Database program inside" the "webapps" folder of tomcat installation directory. 
+1. Put the "Database program" inside the "webapps" folder of tomcat installation directory. 
 
 ```
 Ex: "c:/xammp/tomcat/webapps/Database"
